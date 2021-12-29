@@ -22,35 +22,140 @@ Partial Class AccesoConectadoFR
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.empleadosDG = New System.Windows.Forms.DataGridView()
+        Me.idEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaNacEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaContratoEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ciudad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ordenTrabajoDG = New System.Windows.Forms.DataGridView()
+        Me.idOrden = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.nombreCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaOt = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaRequerida = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.enviadoPor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.direccionEntrega = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.codigoPostal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ordenesDeTrabajoGB = New System.Windows.Forms.GroupBox()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        CType(Me.empleadosDG, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ordenTrabajoDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ordenesDeTrabajoGB.SuspendLayout()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'empleadosDG
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(24, 48)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 25
-        Me.DataGridView1.Size = New System.Drawing.Size(656, 168)
-        Me.DataGridView1.TabIndex = 0
+        Me.empleadosDG.AllowUserToAddRows = False
+        Me.empleadosDG.AllowUserToDeleteRows = False
+        Me.empleadosDG.AllowUserToOrderColumns = True
+        Me.empleadosDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.empleadosDG.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idEmpleado, Me.nombreEmpleado, Me.fechaNacEmpleado, Me.fechaContratoEmpleado, Me.ciudad})
+        Me.empleadosDG.Location = New System.Drawing.Point(24, 48)
+        Me.empleadosDG.Name = "empleadosDG"
+        Me.empleadosDG.ReadOnly = True
+        Me.empleadosDG.RowTemplate.Height = 25
+        Me.empleadosDG.Size = New System.Drawing.Size(581, 168)
+        Me.empleadosDG.TabIndex = 0
         '
-        'DataGridView2
+        'idEmpleado
         '
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(16, 79)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.RowTemplate.Height = 25
-        Me.DataGridView2.Size = New System.Drawing.Size(861, 168)
-        Me.DataGridView2.TabIndex = 1
+        Me.idEmpleado.HeaderText = "ID"
+        Me.idEmpleado.Name = "idEmpleado"
+        Me.idEmpleado.ReadOnly = True
+        '
+        'nombreEmpleado
+        '
+        Me.nombreEmpleado.HeaderText = "Nombre"
+        Me.nombreEmpleado.Name = "nombreEmpleado"
+        Me.nombreEmpleado.ReadOnly = True
+        '
+        'fechaNacEmpleado
+        '
+        Me.fechaNacEmpleado.HeaderText = "Fecha Nac."
+        Me.fechaNacEmpleado.Name = "fechaNacEmpleado"
+        Me.fechaNacEmpleado.ReadOnly = True
+        '
+        'fechaContratoEmpleado
+        '
+        Me.fechaContratoEmpleado.HeaderText = "Fecha Contrato"
+        Me.fechaContratoEmpleado.Name = "fechaContratoEmpleado"
+        Me.fechaContratoEmpleado.ReadOnly = True
+        '
+        'ciudad
+        '
+        Me.ciudad.HeaderText = "Ciudad"
+        Me.ciudad.Name = "ciudad"
+        Me.ciudad.ReadOnly = True
+        '
+        'ordenTrabajoDG
+        '
+        Me.ordenTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.ordenTrabajoDG.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idOrden, Me.nombreCliente, Me.DataGridViewTextBoxColumn1, Me.fechaOt, Me.fechaRequerida, Me.enviadoPor, Me.direccionEntrega, Me.codigoPostal})
+        Me.ordenTrabajoDG.Location = New System.Drawing.Point(16, 179)
+        Me.ordenTrabajoDG.Name = "ordenTrabajoDG"
+        Me.ordenTrabajoDG.RowTemplate.Height = 25
+        Me.ordenTrabajoDG.Size = New System.Drawing.Size(919, 168)
+        Me.ordenTrabajoDG.TabIndex = 1
+        '
+        'idOrden
+        '
+        Me.idOrden.HeaderText = "ID"
+        Me.idOrden.Name = "idOrden"
+        Me.idOrden.ReadOnly = True
+        '
+        'nombreCliente
+        '
+        Me.nombreCliente.HeaderText = "Nombre Cliente"
+        Me.nombreCliente.Name = "nombreCliente"
+        Me.nombreCliente.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Nombre Empleado"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'fechaOt
+        '
+        Me.fechaOt.HeaderText = "Fecha OT"
+        Me.fechaOt.Name = "fechaOt"
+        Me.fechaOt.ReadOnly = True
+        '
+        'fechaRequerida
+        '
+        Me.fechaRequerida.HeaderText = "Fecha Requerida"
+        Me.fechaRequerida.Name = "fechaRequerida"
+        Me.fechaRequerida.ReadOnly = True
+        '
+        'enviadoPor
+        '
+        Me.enviadoPor.HeaderText = "Emp. Delivery"
+        Me.enviadoPor.Name = "enviadoPor"
+        Me.enviadoPor.ReadOnly = True
+        '
+        'direccionEntrega
+        '
+        Me.direccionEntrega.HeaderText = "Dirección Entrega"
+        Me.direccionEntrega.Name = "direccionEntrega"
+        Me.direccionEntrega.ReadOnly = True
+        '
+        'codigoPostal
+        '
+        Me.codigoPostal.HeaderText = "Código Postal"
+        Me.codigoPostal.Name = "codigoPostal"
+        Me.codigoPostal.ReadOnly = True
         '
         'Label1
         '
@@ -64,44 +169,30 @@ Partial Class AccesoConectadoFR
         '
         'ordenesDeTrabajoGB
         '
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.Label4)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.Label3)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.DateTimePicker3)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.DateTimePicker2)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.Label2)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.TextBox2)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.TextBox1)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.DateTimePicker1)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton3)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton2)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton1)
-        Me.ordenesDeTrabajoGB.Controls.Add(Me.DataGridView2)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.ordenTrabajoDG)
         Me.ordenesDeTrabajoGB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ordenesDeTrabajoGB.Location = New System.Drawing.Point(24, 245)
         Me.ordenesDeTrabajoGB.Name = "ordenesDeTrabajoGB"
-        Me.ordenesDeTrabajoGB.Size = New System.Drawing.Size(925, 267)
+        Me.ordenesDeTrabajoGB.Size = New System.Drawing.Size(980, 376)
         Me.ordenesDeTrabajoGB.TabIndex = 4
         Me.ordenesDeTrabajoGB.TabStop = False
         Me.ordenesDeTrabajoGB.Text = "Órdenes de trabajo"
         '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(448, 44)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(108, 19)
-        Me.RadioButton1.TabIndex = 2
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Fecha de envío"
-        Me.RadioButton1.UseVisualStyleBackColor = True
-        '
-        'RadioButton2
-        '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(580, 44)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(110, 19)
-        Me.RadioButton2.TabIndex = 3
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Rango de carga"
-        Me.RadioButton2.UseVisualStyleBackColor = True
-        '
         'RadioButton3
         '
         Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(706, 44)
+        Me.RadioButton3.Location = New System.Drawing.Point(682, 44)
         Me.RadioButton3.Name = "RadioButton3"
         Me.RadioButton3.Size = New System.Drawing.Size(171, 19)
         Me.RadioButton3.TabIndex = 4
@@ -109,18 +200,111 @@ Partial Class AccesoConectadoFR
         Me.RadioButton3.Text = "Rango de fechas de Orden"
         Me.RadioButton3.UseVisualStyleBackColor = True
         '
+        'RadioButton2
+        '
+        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.Location = New System.Drawing.Point(443, 44)
+        Me.RadioButton2.Name = "RadioButton2"
+        Me.RadioButton2.Size = New System.Drawing.Size(110, 19)
+        Me.RadioButton2.TabIndex = 3
+        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.Text = "Rango de carga"
+        Me.RadioButton2.UseVisualStyleBackColor = True
+        '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(167, 48)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(108, 19)
+        Me.RadioButton1.TabIndex = 2
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Fecha de envío"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Enabled = False
+        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker1.Location = New System.Drawing.Point(167, 97)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(108, 23)
+        Me.DateTimePicker1.TabIndex = 5
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(443, 97)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(49, 23)
+        Me.TextBox1.TabIndex = 6
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(516, 97)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(49, 23)
+        Me.TextBox2.TabIndex = 7
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(498, 100)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(12, 15)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "-"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Enabled = False
+        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker2.Location = New System.Drawing.Point(682, 97)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(108, 23)
+        Me.DateTimePicker2.TabIndex = 8
+        '
+        'DateTimePicker3
+        '
+        Me.DateTimePicker3.Enabled = False
+        Me.DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.DateTimePicker3.Location = New System.Drawing.Point(827, 97)
+        Me.DateTimePicker3.Name = "DateTimePicker3"
+        Me.DateTimePicker3.Size = New System.Drawing.Size(108, 23)
+        Me.DateTimePicker3.TabIndex = 9
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label3.Location = New System.Drawing.Point(682, 79)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(42, 15)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Desde"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Location = New System.Drawing.Point(827, 79)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(38, 15)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Hasta"
+        '
         'AccesoConectadoFR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(969, 554)
+        Me.ClientSize = New System.Drawing.Size(1030, 659)
         Me.Controls.Add(Me.ordenesDeTrabajoGB)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.empleadosDG)
         Me.Name = "AccesoConectadoFR"
         Me.Text = "Acceso Conectado"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.empleadosDG, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ordenTrabajoDG, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ordenesDeTrabajoGB.ResumeLayout(False)
         Me.ordenesDeTrabajoGB.PerformLayout()
         Me.ResumeLayout(False)
@@ -128,11 +312,32 @@ Partial Class AccesoConectadoFR
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
-    Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents empleadosDG As DataGridView
+    Friend WithEvents ordenTrabajoDG As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents ordenesDeTrabajoGB As GroupBox
     Friend WithEvents RadioButton3 As RadioButton
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents idEmpleado As DataGridViewTextBoxColumn
+    Friend WithEvents nombreEmpleado As DataGridViewTextBoxColumn
+    Friend WithEvents fechaNacEmpleado As DataGridViewTextBoxColumn
+    Friend WithEvents fechaContratoEmpleado As DataGridViewTextBoxColumn
+    Friend WithEvents ciudad As DataGridViewTextBoxColumn
+    Friend WithEvents idOrden As DataGridViewTextBoxColumn
+    Friend WithEvents nombreCliente As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents fechaOt As DataGridViewTextBoxColumn
+    Friend WithEvents fechaRequerida As DataGridViewTextBoxColumn
+    Friend WithEvents enviadoPor As DataGridViewTextBoxColumn
+    Friend WithEvents direccionEntrega As DataGridViewTextBoxColumn
+    Friend WithEvents codigoPostal As DataGridViewTextBoxColumn
+    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents DateTimePicker3 As DateTimePicker
+    Friend WithEvents DateTimePicker2 As DateTimePicker
 End Class
