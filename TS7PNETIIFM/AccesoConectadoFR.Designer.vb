@@ -49,9 +49,10 @@ Partial Class AccesoConectadoFR
         Me.rangoCargaHastaInput = New System.Windows.Forms.TextBox()
         Me.rangoCargaDesdeInput = New System.Windows.Forms.TextBox()
         Me.fechaEnvioDate = New System.Windows.Forms.DateTimePicker()
-        Me.RadioButton3 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.rangoFechasRadio = New System.Windows.Forms.RadioButton()
+        Me.randoCargaRadio = New System.Windows.Forms.RadioButton()
+        Me.fechaEnvioRadio = New System.Windows.Forms.RadioButton()
+        Me.busqueda = New System.Windows.Forms.Button()
         CType(Me.empleadosDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ordenTrabajoDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ordenesDeTrabajoGB.SuspendLayout()
@@ -181,6 +182,7 @@ Partial Class AccesoConectadoFR
         '
         'ordenesDeTrabajoGB
         '
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.busqueda)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.Label4)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.Label3)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.fechaHasta)
@@ -189,9 +191,9 @@ Partial Class AccesoConectadoFR
         Me.ordenesDeTrabajoGB.Controls.Add(Me.rangoCargaHastaInput)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.rangoCargaDesdeInput)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.fechaEnvioDate)
-        Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton3)
-        Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton2)
-        Me.ordenesDeTrabajoGB.Controls.Add(Me.RadioButton1)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.rangoFechasRadio)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.randoCargaRadio)
+        Me.ordenesDeTrabajoGB.Controls.Add(Me.fechaEnvioRadio)
         Me.ordenesDeTrabajoGB.Controls.Add(Me.ordenTrabajoDG)
         Me.ordenesDeTrabajoGB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.ordenesDeTrabajoGB.Location = New System.Drawing.Point(24, 245)
@@ -205,7 +207,7 @@ Partial Class AccesoConectadoFR
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label4.Location = New System.Drawing.Point(827, 79)
+        Me.Label4.Location = New System.Drawing.Point(555, 79)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(38, 15)
         Me.Label4.TabIndex = 11
@@ -215,7 +217,7 @@ Partial Class AccesoConectadoFR
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(682, 79)
+        Me.Label3.Location = New System.Drawing.Point(410, 79)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 15)
         Me.Label3.TabIndex = 10
@@ -225,7 +227,7 @@ Partial Class AccesoConectadoFR
         '
         Me.fechaHasta.Enabled = False
         Me.fechaHasta.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.fechaHasta.Location = New System.Drawing.Point(827, 100)
+        Me.fechaHasta.Location = New System.Drawing.Point(555, 100)
         Me.fechaHasta.Name = "fechaHasta"
         Me.fechaHasta.Size = New System.Drawing.Size(108, 23)
         Me.fechaHasta.TabIndex = 9
@@ -234,7 +236,7 @@ Partial Class AccesoConectadoFR
         '
         Me.fechaDesde.Enabled = False
         Me.fechaDesde.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.fechaDesde.Location = New System.Drawing.Point(682, 100)
+        Me.fechaDesde.Location = New System.Drawing.Point(410, 100)
         Me.fechaDesde.Name = "fechaDesde"
         Me.fechaDesde.Size = New System.Drawing.Size(108, 23)
         Me.fechaDesde.TabIndex = 8
@@ -243,7 +245,7 @@ Partial Class AccesoConectadoFR
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(498, 100)
+        Me.Label2.Location = New System.Drawing.Point(271, 100)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(12, 15)
         Me.Label2.TabIndex = 5
@@ -252,7 +254,7 @@ Partial Class AccesoConectadoFR
         'rangoCargaHastaInput
         '
         Me.rangoCargaHastaInput.Enabled = False
-        Me.rangoCargaHastaInput.Location = New System.Drawing.Point(516, 97)
+        Me.rangoCargaHastaInput.Location = New System.Drawing.Point(289, 97)
         Me.rangoCargaHastaInput.Name = "rangoCargaHastaInput"
         Me.rangoCargaHastaInput.Size = New System.Drawing.Size(49, 23)
         Me.rangoCargaHastaInput.TabIndex = 7
@@ -260,7 +262,7 @@ Partial Class AccesoConectadoFR
         'rangoCargaDesdeInput
         '
         Me.rangoCargaDesdeInput.Enabled = False
-        Me.rangoCargaDesdeInput.Location = New System.Drawing.Point(443, 97)
+        Me.rangoCargaDesdeInput.Location = New System.Drawing.Point(216, 97)
         Me.rangoCargaDesdeInput.Name = "rangoCargaDesdeInput"
         Me.rangoCargaDesdeInput.Size = New System.Drawing.Size(49, 23)
         Me.rangoCargaDesdeInput.TabIndex = 6
@@ -269,43 +271,53 @@ Partial Class AccesoConectadoFR
         '
         Me.fechaEnvioDate.Enabled = False
         Me.fechaEnvioDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.fechaEnvioDate.Location = New System.Drawing.Point(167, 97)
+        Me.fechaEnvioDate.Location = New System.Drawing.Point(50, 93)
         Me.fechaEnvioDate.Name = "fechaEnvioDate"
         Me.fechaEnvioDate.Size = New System.Drawing.Size(108, 23)
         Me.fechaEnvioDate.TabIndex = 5
         '
-        'RadioButton3
+        'rangoFechasRadio
         '
-        Me.RadioButton3.AutoSize = True
-        Me.RadioButton3.Location = New System.Drawing.Point(682, 44)
-        Me.RadioButton3.Name = "RadioButton3"
-        Me.RadioButton3.Size = New System.Drawing.Size(171, 19)
-        Me.RadioButton3.TabIndex = 4
-        Me.RadioButton3.TabStop = True
-        Me.RadioButton3.Text = "Rango de fechas de Orden"
-        Me.RadioButton3.UseVisualStyleBackColor = True
+        Me.rangoFechasRadio.AutoSize = True
+        Me.rangoFechasRadio.Location = New System.Drawing.Point(410, 44)
+        Me.rangoFechasRadio.Name = "rangoFechasRadio"
+        Me.rangoFechasRadio.Size = New System.Drawing.Size(171, 19)
+        Me.rangoFechasRadio.TabIndex = 4
+        Me.rangoFechasRadio.TabStop = True
+        Me.rangoFechasRadio.Text = "Rango de fechas de Orden"
+        Me.rangoFechasRadio.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'randoCargaRadio
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(443, 44)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(110, 19)
-        Me.RadioButton2.TabIndex = 3
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Rango de carga"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.randoCargaRadio.AutoSize = True
+        Me.randoCargaRadio.Location = New System.Drawing.Point(216, 44)
+        Me.randoCargaRadio.Name = "randoCargaRadio"
+        Me.randoCargaRadio.Size = New System.Drawing.Size(110, 19)
+        Me.randoCargaRadio.TabIndex = 3
+        Me.randoCargaRadio.TabStop = True
+        Me.randoCargaRadio.Text = "Rango de carga"
+        Me.randoCargaRadio.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'fechaEnvioRadio
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(167, 48)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(108, 19)
-        Me.RadioButton1.TabIndex = 2
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Fecha de envío"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.fechaEnvioRadio.AutoSize = True
+        Me.fechaEnvioRadio.Location = New System.Drawing.Point(50, 44)
+        Me.fechaEnvioRadio.Name = "fechaEnvioRadio"
+        Me.fechaEnvioRadio.Size = New System.Drawing.Size(108, 19)
+        Me.fechaEnvioRadio.TabIndex = 2
+        Me.fechaEnvioRadio.TabStop = True
+        Me.fechaEnvioRadio.Text = "Fecha de envío"
+        Me.fechaEnvioRadio.UseVisualStyleBackColor = True
+        '
+        'busqueda
+        '
+        Me.busqueda.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.busqueda.Location = New System.Drawing.Point(735, 97)
+        Me.busqueda.Name = "busqueda"
+        Me.busqueda.Size = New System.Drawing.Size(75, 23)
+        Me.busqueda.TabIndex = 12
+        Me.busqueda.Text = "Busqueda"
+        Me.busqueda.UseVisualStyleBackColor = False
         '
         'AccesoConectadoFR
         '
@@ -330,9 +342,9 @@ Partial Class AccesoConectadoFR
     Friend WithEvents ordenTrabajoDG As DataGridView
     Friend WithEvents Label1 As Label
     Friend WithEvents ordenesDeTrabajoGB As GroupBox
-    Friend WithEvents RadioButton3 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents RadioButton1 As RadioButton
+    Friend WithEvents rangoFechasRadio As RadioButton
+    Friend WithEvents randoCargaRadio As RadioButton
+    Friend WithEvents fechaEnvioRadio As RadioButton
     Friend WithEvents idEmpleado As DataGridViewTextBoxColumn
     Friend WithEvents nombreEmpleado As DataGridViewTextBoxColumn
     Friend WithEvents fechaNacEmpleado As DataGridViewTextBoxColumn
@@ -356,4 +368,5 @@ Partial Class AccesoConectadoFR
     Friend WithEvents enviadoPor As DataGridViewTextBoxColumn
     Friend WithEvents direccionEntrega As DataGridViewTextBoxColumn
     Friend WithEvents codigoPostal As DataGridViewTextBoxColumn
+    Friend WithEvents busqueda As Button
 End Class

@@ -124,6 +124,40 @@ Public Class AccesoConectadoFR
                 comando.Parameters.AddWithValue("@idEmpleado", idEmpleadoGlobal)
                 comando.Parameters.AddWithValue("@fechaEnvio", fechaEnvioInput)
 
+            ElseIf pesoCargaDesde IsNot "" And pesoCargaHasta IsNot "" Then
+
+                query = "select
+                            o.OrderID as id, 
+                            c.CompanyName as nombreCliente,
+                            concat(e.FirstName, ' ', e.LastName) as nombreEmpleado , 
+                            o.Freight as carga,
+                            o.OrderDate as fechaOT, 
+                            o.RequiredDate as fechaRequerida, 
+                            o.ShippedDate as fechaEnvio,
+                            s.CompanyName as enviadoPor, 
+                            concat(o.ShipAddress, ', ',
+                            o.ShipCity, ', ', 
+                            o.ShipCountry) as direccionEntrega,
+                            o.ShipPostalCode as codigoPostal
+                            from orders o 
+                            inner join customers c 
+                            on o.CustomerID = c.CustomerID 
+                            inner join shippers s 
+                            on s.ShipperID = o.ShipVia 
+                            inner join employees e 
+                            on e.EmployeeID = o.EmployeeID 
+                            where o.EmployeeID = @idEmpleado
+                            and o.Freight >= @desde and o.Freight <= @hasta;"
+
+                comando.CommandType = CommandType.Text
+                comando.Connection = conn
+                comando.CommandText = query
+                comando.Parameters.Clear()
+                comando.Parameters.AddWithValue("@idEmpleado", idEmpleadoGlobal)
+                comando.Parameters.AddWithValue("@desde", pesoCargaDesde)
+                comando.Parameters.AddWithValue("@hasta", pesoCargaHasta)
+
+
 
             End If
 
@@ -165,7 +199,7 @@ Public Class AccesoConectadoFR
 
     End Sub
 
-    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton1.CheckedChanged
+    Private Sub RadioButton1_CheckedChanged(sender As Object, e As EventArgs) Handles fechaEnvioRadio.CheckedChanged
         fechaEnvioDate.Enabled = True
         rangoCargaDesdeInput.Enabled = False
         rangoCargaHastaInput.Enabled = False
@@ -173,7 +207,7 @@ Public Class AccesoConectadoFR
         fechaHasta.Enabled = False
     End Sub
 
-    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton2.CheckedChanged
+    Private Sub RadioButton2_CheckedChanged(sender As Object, e As EventArgs) Handles randoCargaRadio.CheckedChanged
         fechaEnvioDate.Enabled = False
         rangoCargaDesdeInput.Enabled = True
         rangoCargaHastaInput.Enabled = True
@@ -181,7 +215,7 @@ Public Class AccesoConectadoFR
         fechaHasta.Enabled = False
     End Sub
 
-    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles RadioButton3.CheckedChanged
+    Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles rangoFechasRadio.CheckedChanged
         fechaEnvioDate.Enabled = False
         rangoCargaDesdeInput.Enabled = True
         rangoCargaHastaInput.Enabled = True
@@ -189,13 +223,24 @@ Public Class AccesoConectadoFR
         fechaHasta.Enabled = True
     End Sub
 
-    Private Sub fechaEnvioDate_ValueChanged(sender As Object, e As EventArgs) Handles fechaEnvioDate.ValueChanged
 
-        Dim fechaEnvio As String = fechaEnvioDate.Value.ToString.Substring(0, fechaEnvioDate.Value.ToString.LastIndexOf(" "))
+    Private Sub busqueda_Click(sender As Object, e As EventArgs) Handles busqueda.Click
 
-        ordenesDeTrabajoGet(0, fechaEnvio, "", "", "", "")
+        If fechaEnvioRadio.Checked Then
+            Dim fechaEnvio As String = fechaEnvioDate.Value.ToString.Substring(0, fechaEnvioDate.Value.ToString.LastIndexOf(" "))
+            ordenesDeTrabajoGet(0, fechaEnvio, "", "", "", "")
+        End If
+
+        If randoCargaRadio.Checked Then
+            Dim cargaDesde As String = rangoCargaDesdeInput.Text
+            Dim cargaHasta As String = rangoCargaHastaInput.Text
+
+            ordenesDeTrabajoGet(0, "", cargaDesde, cargaHasta, "", "")
+        End If
+
+        If rangoFechasRadio.Checked Then
+
+        End If
 
     End Sub
-
-
 End Class
