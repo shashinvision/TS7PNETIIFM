@@ -46,9 +46,12 @@ Partial Class AccesoDesconectadoFR
         '
         'detalleOrdenesDeTrabajoDG
         '
+        Me.detalleOrdenesDeTrabajoDG.AllowUserToAddRows = False
+        Me.detalleOrdenesDeTrabajoDG.AllowUserToDeleteRows = False
         Me.detalleOrdenesDeTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.detalleOrdenesDeTrabajoDG.Location = New System.Drawing.Point(38, 371)
         Me.detalleOrdenesDeTrabajoDG.Name = "detalleOrdenesDeTrabajoDG"
+        Me.detalleOrdenesDeTrabajoDG.ReadOnly = True
         Me.detalleOrdenesDeTrabajoDG.RowTemplate.Height = 25
         Me.detalleOrdenesDeTrabajoDG.Size = New System.Drawing.Size(803, 150)
         Me.detalleOrdenesDeTrabajoDG.TabIndex = 1
@@ -188,9 +191,12 @@ Partial Class AccesoDesconectadoFR
         '
         'ordenesDeTrabajoDG
         '
+        Me.ordenesDeTrabajoDG.AllowUserToAddRows = False
+        Me.ordenesDeTrabajoDG.AllowUserToDeleteRows = False
         Me.ordenesDeTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ordenesDeTrabajoDG.Location = New System.Drawing.Point(6, 122)
         Me.ordenesDeTrabajoDG.Name = "ordenesDeTrabajoDG"
+        Me.ordenesDeTrabajoDG.ReadOnly = True
         Me.ordenesDeTrabajoDG.RowTemplate.Height = 25
         Me.ordenesDeTrabajoDG.Size = New System.Drawing.Size(803, 150)
         Me.ordenesDeTrabajoDG.TabIndex = 10

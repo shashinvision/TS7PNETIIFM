@@ -18,11 +18,19 @@ Public Class AccesoDesconectadoFR
     Dim adapterNames As New MySqlDataAdapter()
     Dim tablaNames As DataTable = New DataTable()
 
+    Dim dataSetOTDEtalles As New DataSet()
+    Dim adapterOTDEtalles As New MySqlDataAdapter()
+    Dim tablaOTDEtalles As DataTable = New DataTable()
+
+
     Dim query As String
+
+    Dim idOrdenDeTrabajoGLobal As String
 
     Private Sub AccesoDesconectadoFR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         orderenesDeTrabajoGet()
+        orderenesDeTrabajoDetalleGet()
         countrysGet()
         countryCB()
         namesGet()
@@ -65,6 +73,40 @@ Public Class AccesoDesconectadoFR
             adapter.Fill(dataSet, "OrdenesDeTrabajo")
             adapter.MissingSchemaAction = MissingSchemaAction.AddWithKey
             tablaOrdenesDeTrabajo = dataSet.Tables("OrdenesDeTrabajo")
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error getSuppliers: " + ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+    Public Sub orderenesDeTrabajoDetalleGet()
+
+        query = "SELECT 
+                    s.OrderID,
+                    p.ProductID,
+                    p.ProductName,
+                    s.UnitPrice,
+                    s.Quantity,
+                    s.Discount 
+                    FROM northwind.orderdetails s
+                    inner join products p 
+                    on p.ProductID = s.ProductID ;"
+
+
+
+        Try
+
+
+            comando = New MySqlCommand(query, conn)
+            comando.commandType = CommandType.Text
+            adapterOTDEtalles.SelectCommand = comando
+            conn.Open()
+            adapterOTDEtalles.Fill(dataSetOTDEtalles, "OrdenesDeTrabajoDetalle")
+            adapterOTDEtalles.MissingSchemaAction = MissingSchemaAction.AddWithKey
+            tablaOTDEtalles = dataSetOTDEtalles.Tables("OrdenesDeTrabajoDetalle")
 
 
         Catch ex As Exception
@@ -331,5 +373,18 @@ Public Class AccesoDesconectadoFR
             vtOrder.Sort = orden
             ordenesDeTrabajoDG.DataSource = vtOrder
         End If
+    End Sub
+
+    Private Sub ordenesDeTrabajoDG_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ordenesDeTrabajoDG.CellClick
+
+        idOrdenDeTrabajoGLobal = ordenesDeTrabajoDG.Rows(e.RowIndex).Cells(0).Value
+        Dim filtro As String
+        Dim vistaTemp As DataView
+
+        filtro = "OrderID = '" + idOrdenDeTrabajoGLobal + "'"
+        vistaTemp = New DataView(tablaOTDEtalles, filtro, "OrderID ASC", DataViewRowState.CurrentRows)
+        detalleOrdenesDeTrabajoDG.DataSource = vistaTemp
+        detalleOrdenesDeTrabajoDG.Refresh()
+
     End Sub
 End Class
