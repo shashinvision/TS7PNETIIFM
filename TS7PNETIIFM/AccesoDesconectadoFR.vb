@@ -10,20 +10,41 @@ Public Class AccesoDesconectadoFR
     Dim comando = New MySqlCommand()
     Dim tablaOrdenesDeTrabajo As DataTable = New DataTable()
 
+    Dim dataSetCountrys As New DataSet()
+    Dim adapterCountrys As New MySqlDataAdapter()
+    Dim tablaCountrys As DataTable = New DataTable()
 
     Dim query As String
 
     Private Sub AccesoDesconectadoFR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         orderenesDeTrabajoGet()
+        countrysGet()
         countryCB()
         nameCB()
+        ordenesTrabajoGrid()
 
     End Sub
 
-    Public Sub orderenesDeTrabajoGet()
-        query = "SELECT * FROM northwind.orders"
 
+
+    Public Sub orderenesDeTrabajoGet()
+        query = "select
+                    o.OrderID, 
+                    c.CompanyName as nombreCliente,
+                    o.Freight as carga,
+                    o.OrderDate as fechaOT, 
+                    o.RequiredDate as fechaRequerida, 
+                    o.ShippedDate as fechaEnvio,
+                    concat(o.ShipAddress, ', ',
+                    o.ShipCity, ', ', 
+                    o.ShipCountry) as direccionEntrega,
+                    o.ShipPostalCode as codigoPostal,
+                    o.ShipCountry,
+                    o.ShipName
+                    FROM northwind.orders o
+                    inner join customers c 
+                    on c.CustomerID = o.CustomerID;"
         Try
 
             comando = New MySqlCommand(query, conn)
@@ -42,6 +63,30 @@ Public Class AccesoDesconectadoFR
         End Try
     End Sub
 
+    Public Sub countrysGet()
+        query = "select
+                    o.OrderID, 
+                    o.ShipCountry
+                    FROM northwind.orders o
+                    group by o.ShipCountry;"
+        Try
+
+            comando = New MySqlCommand(query, conn)
+            comando.commandType = CommandType.Text
+            adapterCountrys.SelectCommand = comando
+            conn.Open()
+            adapterCountrys.Fill(dataSetCountrys, "country")
+            adapterCountrys.MissingSchemaAction = MissingSchemaAction.AddWithKey
+            tablaCountrys = dataSetCountrys.Tables("country")
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error getSuppliers: " + ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
     Public Sub countryCB()
 
         Try
@@ -49,7 +94,7 @@ Public Class AccesoDesconectadoFR
 
             Dim shipCountryCBDictionary As New Dictionary(Of String, String)()
 
-            For Each row In tablaOrdenesDeTrabajo.Rows
+            For Each row In tablaCountrys.Rows
 
                 shipCountryCBDictionary.Add(row.Item("OrderID"), row.Item("ShipCountry"))
 
@@ -105,4 +150,22 @@ Public Class AccesoDesconectadoFR
         shipNameCB.Enabled = True
         shipCountryCB.Enabled = False
     End Sub
+
+    Private Sub shipCountryCB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles shipCountryCB.SelectedIndexChanged
+
+
+    End Sub
+
+    Public Sub ordenesTrabajoGrid()
+        Try
+            ordenesDeTrabajoDG.DataSource = tablaOrdenesDeTrabajo
+        Catch ex As Exception
+            MessageBox.Show("Error carga data OT: " + ex.Message)
+
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
+
 End Class

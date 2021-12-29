@@ -24,6 +24,9 @@ Partial Class AccesoDesconectadoFR
     Private Sub InitializeComponent()
         Me.detalleOrdenesDeTrabajoDG = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.shipNameRB = New System.Windows.Forms.RadioButton()
+        Me.shipCountryRB = New System.Windows.Forms.RadioButton()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.ordenesDeTrabajoDG = New System.Windows.Forms.DataGridView()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -34,9 +37,6 @@ Partial Class AccesoDesconectadoFR
         Me.shipNameCB = New System.Windows.Forms.ComboBox()
         Me.shipCountryCB = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.shipCountryRB = New System.Windows.Forms.RadioButton()
-        Me.shipNameRB = New System.Windows.Forms.RadioButton()
         CType(Me.detalleOrdenesDeTrabajoDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.ordenesDeTrabajoDG, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +72,39 @@ Partial Class AccesoDesconectadoFR
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ordenes de trabajo"
+        '
+        'shipNameRB
+        '
+        Me.shipNameRB.AutoSize = True
+        Me.shipNameRB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.shipNameRB.Location = New System.Drawing.Point(192, 31)
+        Me.shipNameRB.Name = "shipNameRB"
+        Me.shipNameRB.Size = New System.Drawing.Size(82, 19)
+        Me.shipNameRB.TabIndex = 13
+        Me.shipNameRB.TabStop = True
+        Me.shipNameRB.Text = "ShipName"
+        Me.shipNameRB.UseVisualStyleBackColor = True
+        '
+        'shipCountryRB
+        '
+        Me.shipCountryRB.AutoSize = True
+        Me.shipCountryRB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.shipCountryRB.Location = New System.Drawing.Point(21, 31)
+        Me.shipCountryRB.Name = "shipCountryRB"
+        Me.shipCountryRB.Size = New System.Drawing.Size(93, 19)
+        Me.shipCountryRB.TabIndex = 12
+        Me.shipCountryRB.TabStop = True
+        Me.shipCountryRB.Text = "ShipCountry"
+        Me.shipCountryRB.UseVisualStyleBackColor = True
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(347, 73)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 11
+        Me.Button1.Text = "Buscar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'ordenesDeTrabajoDG
         '
@@ -177,39 +210,6 @@ Partial Class AccesoDesconectadoFR
         Me.Label5.Size = New System.Drawing.Size(162, 15)
         Me.Label5.TabIndex = 10
         Me.Label5.Text = "Detalle de Orden de Trabajo"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(347, 73)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 11
-        Me.Button1.Text = "Buscar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'shipCountryRB
-        '
-        Me.shipCountryRB.AutoSize = True
-        Me.shipCountryRB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.shipCountryRB.Location = New System.Drawing.Point(21, 31)
-        Me.shipCountryRB.Name = "shipCountryRB"
-        Me.shipCountryRB.Size = New System.Drawing.Size(93, 19)
-        Me.shipCountryRB.TabIndex = 12
-        Me.shipCountryRB.TabStop = True
-        Me.shipCountryRB.Text = "ShipCountry"
-        Me.shipCountryRB.UseVisualStyleBackColor = True
-        '
-        'shipNameRB
-        '
-        Me.shipNameRB.AutoSize = True
-        Me.shipNameRB.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.shipNameRB.Location = New System.Drawing.Point(192, 31)
-        Me.shipNameRB.Name = "shipNameRB"
-        Me.shipNameRB.Size = New System.Drawing.Size(82, 19)
-        Me.shipNameRB.TabIndex = 13
-        Me.shipNameRB.TabStop = True
-        Me.shipNameRB.Text = "ShipName"
-        Me.shipNameRB.UseVisualStyleBackColor = True
         '
         'AccesoDesconectadoFR
         '
