@@ -22,6 +22,8 @@ Partial Class AccesoDesconectadoFR
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.detalleOrdenesDeTrabajoDG = New System.Windows.Forms.DataGridView()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
@@ -48,11 +50,15 @@ Partial Class AccesoDesconectadoFR
         '
         Me.detalleOrdenesDeTrabajoDG.AllowUserToAddRows = False
         Me.detalleOrdenesDeTrabajoDG.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.detalleOrdenesDeTrabajoDG.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.detalleOrdenesDeTrabajoDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.detalleOrdenesDeTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.detalleOrdenesDeTrabajoDG.Location = New System.Drawing.Point(38, 371)
         Me.detalleOrdenesDeTrabajoDG.Name = "detalleOrdenesDeTrabajoDG"
         Me.detalleOrdenesDeTrabajoDG.ReadOnly = True
         Me.detalleOrdenesDeTrabajoDG.RowTemplate.Height = 25
+        Me.detalleOrdenesDeTrabajoDG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.detalleOrdenesDeTrabajoDG.Size = New System.Drawing.Size(803, 150)
         Me.detalleOrdenesDeTrabajoDG.TabIndex = 1
         '
@@ -193,11 +199,15 @@ Partial Class AccesoDesconectadoFR
         '
         Me.ordenesDeTrabajoDG.AllowUserToAddRows = False
         Me.ordenesDeTrabajoDG.AllowUserToDeleteRows = False
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.ordenesDeTrabajoDG.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle2
+        Me.ordenesDeTrabajoDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ordenesDeTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ordenesDeTrabajoDG.Location = New System.Drawing.Point(6, 122)
         Me.ordenesDeTrabajoDG.Name = "ordenesDeTrabajoDG"
         Me.ordenesDeTrabajoDG.ReadOnly = True
         Me.ordenesDeTrabajoDG.RowTemplate.Height = 25
+        Me.ordenesDeTrabajoDG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.ordenesDeTrabajoDG.Size = New System.Drawing.Size(803, 150)
         Me.ordenesDeTrabajoDG.TabIndex = 10
         '
