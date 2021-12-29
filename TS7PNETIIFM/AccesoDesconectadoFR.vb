@@ -14,6 +14,10 @@ Public Class AccesoDesconectadoFR
     Dim adapterCountrys As New MySqlDataAdapter()
     Dim tablaCountrys As DataTable = New DataTable()
 
+    Dim dataSetNames As New DataSet()
+    Dim adapterNames As New MySqlDataAdapter()
+    Dim tablaNames As DataTable = New DataTable()
+
     Dim query As String
 
     Private Sub AccesoDesconectadoFR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,6 +25,7 @@ Public Class AccesoDesconectadoFR
         orderenesDeTrabajoGet()
         countrysGet()
         countryCB()
+        namesGet()
         nameCB()
         ordenesTrabajoGrid()
 
@@ -29,6 +34,7 @@ Public Class AccesoDesconectadoFR
 
 
     Public Sub orderenesDeTrabajoGet()
+
         query = "select
                     o.OrderID, 
                     c.CompanyName as nombreCliente,
@@ -41,10 +47,15 @@ Public Class AccesoDesconectadoFR
                     o.ShipCountry) as direccionEntrega,
                     o.ShipPostalCode as codigoPostal,
                     o.ShipCountry,
-                    o.ShipName
+                    o.ShipName,
+                    o.ShipVia,
+                    o.ShipCity
                     FROM northwind.orders o
                     inner join customers c 
                     on c.CustomerID = o.CustomerID;"
+
+
+
         Try
 
             comando = New MySqlCommand(query, conn)
@@ -114,6 +125,30 @@ Public Class AccesoDesconectadoFR
 
     End Sub
 
+    Public Sub namesGet()
+        query = "select
+                    o.OrderID, 
+                    o.ShipName
+                    FROM northwind.orders o
+                    group by o.ShipName;"
+        Try
+
+            comando = New MySqlCommand(query, conn)
+            comando.commandType = CommandType.Text
+            adapterNames.SelectCommand = comando
+            conn.Open()
+            adapterNames.Fill(dataSetNames, "names")
+            adapterNames.MissingSchemaAction = MissingSchemaAction.AddWithKey
+            tablaNames = dataSetNames.Tables("names")
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error getSuppliers: " + ex.Message)
+        Finally
+            conn.Close()
+        End Try
+    End Sub
+
     Public Sub nameCB()
 
         Try
@@ -121,7 +156,7 @@ Public Class AccesoDesconectadoFR
 
             Dim shipNameCBDictionary As New Dictionary(Of String, String)()
 
-            For Each row In tablaOrdenesDeTrabajo.Rows
+            For Each row In tablaNames.Rows
 
                 shipNameCBDictionary.Add(row.Item("OrderID"), row.Item("ShipName"))
 
@@ -151,14 +186,10 @@ Public Class AccesoDesconectadoFR
         shipCountryCB.Enabled = False
     End Sub
 
-    Private Sub shipCountryCB_SelectedIndexChanged(sender As Object, e As EventArgs) Handles shipCountryCB.SelectedIndexChanged
-
-
-    End Sub
-
     Public Sub ordenesTrabajoGrid()
         Try
             ordenesDeTrabajoDG.DataSource = tablaOrdenesDeTrabajo
+            ordenesDeTrabajoDG.Refresh()
         Catch ex As Exception
             MessageBox.Show("Error carga data OT: " + ex.Message)
 
@@ -167,5 +198,138 @@ Public Class AccesoDesconectadoFR
         End Try
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Usando un metodo de filtro
+        If shipCountryRB.Checked Then
 
+            Dim valorCountryCB As String = shipCountryCB.Text
+            Dim expresion As String
+            Dim dtResultado As DataTable
+
+            expresion = "ShipCountry = '" + valorCountryCB + "'"
+            dtResultado = tablaOrdenesDeTrabajo.Clone()
+
+            For Each rowResult As DataRow In tablaOrdenesDeTrabajo.Select(expresion)
+                dtResultado.ImportRow(rowResult)
+            Next
+
+            ordenesDeTrabajoDG.DataSource = dtResultado
+
+
+        End If
+
+        If shipNameRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorNameCB = shipNameCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipName = '" + valorNameCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipName Asc", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+        End If
+    End Sub
+
+    Private Sub ShipViaAsc_CheckedChanged(sender As Object, e As EventArgs) Handles ShipViaAsc.CheckedChanged
+
+
+        If shipCountryRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorCountryCB As String = shipCountryCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipCountry = '" + valorCountryCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipVia ASC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+
+        ElseIf shipNameRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorNameCB = shipNameCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipName = '" + valorNameCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipVia ASC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+        Else
+            Dim vtOrder = New DataView(tablaOrdenesDeTrabajo)
+            Dim orden As String
+
+
+            orden = "ShipVia ASC"
+            vtOrder.Sort = orden
+            ordenesDeTrabajoDG.DataSource = vtOrder
+        End If
+
+    End Sub
+
+    Private Sub ShipViaDesc_CheckedChanged(sender As Object, e As EventArgs) Handles ShipViaDesc.CheckedChanged
+        If shipCountryRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorCountryCB As String = shipCountryCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipCountry = '" + valorCountryCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipVia DESC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+
+        ElseIf shipNameRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorNameCB = shipNameCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipName = '" + valorNameCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipVia DESC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+        Else
+            Dim vtOrder = New DataView(tablaOrdenesDeTrabajo)
+            Dim orden As String
+
+
+            orden = "ShipVia DESC"
+            vtOrder.Sort = orden
+            ordenesDeTrabajoDG.DataSource = vtOrder
+        End If
+    End Sub
+
+    Private Sub ShipCityAsc_CheckedChanged(sender As Object, e As EventArgs) Handles ShipCityAsc.CheckedChanged
+        If shipCountryRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorCountryCB As String = shipCountryCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipCountry = '" + valorCountryCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipCity ASC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+
+        ElseIf shipNameRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorNameCB = shipNameCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipName = '" + valorNameCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipCity ASC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+        Else
+            Dim vtOrder = New DataView(tablaOrdenesDeTrabajo)
+            Dim orden As String
+
+
+            orden = "ShipCity ASC"
+            vtOrder.Sort = orden
+            ordenesDeTrabajoDG.DataSource = vtOrder
+        End If
+    End Sub
 End Class
