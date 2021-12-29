@@ -157,6 +157,38 @@ Public Class AccesoConectadoFR
                 comando.Parameters.AddWithValue("@desde", pesoCargaDesde)
                 comando.Parameters.AddWithValue("@hasta", pesoCargaHasta)
 
+            ElseIf rangoFechaOrdenDesde IsNot "" And rangoFechaOrdenHasta IsNot "" Then
+
+                query = "select
+                            o.OrderID as id, 
+                            c.CompanyName as nombreCliente,
+                            concat(e.FirstName, ' ', e.LastName) as nombreEmpleado , 
+                            o.Freight as carga,
+                            o.OrderDate as fechaOT, 
+                            o.RequiredDate as fechaRequerida, 
+                            o.ShippedDate as fechaEnvio,
+                            s.CompanyName as enviadoPor, 
+                            concat(o.ShipAddress, ', ',
+                            o.ShipCity, ', ', 
+                            o.ShipCountry) as direccionEntrega,
+                            o.ShipPostalCode as codigoPostal
+                            from orders o 
+                            inner join customers c 
+                            on o.CustomerID = c.CustomerID 
+                            inner join shippers s 
+                            on s.ShipperID = o.ShipVia 
+                            inner join employees e 
+                            on e.EmployeeID = o.EmployeeID 
+                            where o.EmployeeID = @idEmpleado
+                           and o.OrderDate BETWEEN STR_TO_DATE(@desde,'%d-%m-%Y') AND STR_TO_DATE(@hasta,'%d-%m-%Y');"
+
+                comando.CommandType = CommandType.Text
+                comando.Connection = conn
+                comando.CommandText = query
+                comando.Parameters.Clear()
+                comando.Parameters.AddWithValue("@idEmpleado", idEmpleadoGlobal)
+                comando.Parameters.AddWithValue("@desde", rangoFechaOrdenDesde)
+                comando.Parameters.AddWithValue("@hasta", rangoFechaOrdenHasta)
 
 
             End If
@@ -239,7 +271,10 @@ Public Class AccesoConectadoFR
         End If
 
         If rangoFechasRadio.Checked Then
+            Dim fechaD As String = fechaDesde.Value.ToString.Substring(0, fechaDesde.Value.ToString.LastIndexOf(" "))
+            Dim fechaH As String = fechaHasta.Value.ToString.Substring(0, fechaHasta.Value.ToString.LastIndexOf(" "))
 
+            ordenesDeTrabajoGet(0, "", "", "", fechaD, fechaH)
         End If
 
     End Sub
