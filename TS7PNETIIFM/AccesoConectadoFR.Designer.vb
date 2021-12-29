@@ -22,6 +22,7 @@ Partial Class AccesoConectadoFR
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.empleadosDG = New System.Windows.Forms.DataGridView()
         Me.idEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nombreEmpleado = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,6 +42,7 @@ Partial Class AccesoConectadoFR
         Me.codigoPostal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.ordenesDeTrabajoGB = New System.Windows.Forms.GroupBox()
+        Me.busqueda = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.fechaHasta = New System.Windows.Forms.DateTimePicker()
@@ -52,7 +54,6 @@ Partial Class AccesoConectadoFR
         Me.rangoFechasRadio = New System.Windows.Forms.RadioButton()
         Me.randoCargaRadio = New System.Windows.Forms.RadioButton()
         Me.fechaEnvioRadio = New System.Windows.Forms.RadioButton()
-        Me.busqueda = New System.Windows.Forms.Button()
         CType(Me.empleadosDG, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ordenTrabajoDG, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ordenesDeTrabajoGB.SuspendLayout()
@@ -63,12 +64,16 @@ Partial Class AccesoConectadoFR
         Me.empleadosDG.AllowUserToAddRows = False
         Me.empleadosDG.AllowUserToDeleteRows = False
         Me.empleadosDG.AllowUserToOrderColumns = True
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.empleadosDG.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.empleadosDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.empleadosDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.empleadosDG.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idEmpleado, Me.nombreEmpleado, Me.fechaNacEmpleado, Me.fechaContratoEmpleado, Me.ciudad})
         Me.empleadosDG.Location = New System.Drawing.Point(24, 48)
         Me.empleadosDG.Name = "empleadosDG"
         Me.empleadosDG.ReadOnly = True
         Me.empleadosDG.RowTemplate.Height = 25
+        Me.empleadosDG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.empleadosDG.Size = New System.Drawing.Size(581, 168)
         Me.empleadosDG.TabIndex = 0
         '
@@ -77,38 +82,47 @@ Partial Class AccesoConectadoFR
         Me.idEmpleado.HeaderText = "ID"
         Me.idEmpleado.Name = "idEmpleado"
         Me.idEmpleado.ReadOnly = True
+        Me.idEmpleado.Width = 43
         '
         'nombreEmpleado
         '
         Me.nombreEmpleado.HeaderText = "Nombre"
         Me.nombreEmpleado.Name = "nombreEmpleado"
         Me.nombreEmpleado.ReadOnly = True
+        Me.nombreEmpleado.Width = 76
         '
         'fechaNacEmpleado
         '
         Me.fechaNacEmpleado.HeaderText = "Fecha Nac."
         Me.fechaNacEmpleado.Name = "fechaNacEmpleado"
         Me.fechaNacEmpleado.ReadOnly = True
+        Me.fechaNacEmpleado.Width = 83
         '
         'fechaContratoEmpleado
         '
         Me.fechaContratoEmpleado.HeaderText = "Fecha Contrato"
         Me.fechaContratoEmpleado.Name = "fechaContratoEmpleado"
         Me.fechaContratoEmpleado.ReadOnly = True
+        Me.fechaContratoEmpleado.Width = 104
         '
         'ciudad
         '
         Me.ciudad.HeaderText = "Ciudad"
         Me.ciudad.Name = "ciudad"
         Me.ciudad.ReadOnly = True
+        Me.ciudad.Width = 70
         '
         'ordenTrabajoDG
         '
+        Me.ordenTrabajoDG.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.ordenTrabajoDG.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.ordenTrabajoDG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.ordenTrabajoDG.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.idOrden, Me.nombreCliente, Me.DataGridViewTextBoxColumn1, Me.pesoCarga, Me.fechaOt, Me.fechaRequerida, Me.fechaEnvio, Me.enviadoPor, Me.direccionEntrega, Me.codigoPostal})
         Me.ordenTrabajoDG.Location = New System.Drawing.Point(16, 179)
         Me.ordenTrabajoDG.Name = "ordenTrabajoDG"
+        Me.ordenTrabajoDG.ReadOnly = True
         Me.ordenTrabajoDG.RowTemplate.Height = 25
+        Me.ordenTrabajoDG.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.ordenTrabajoDG.Size = New System.Drawing.Size(944, 168)
         Me.ordenTrabajoDG.TabIndex = 1
         '
@@ -117,40 +131,49 @@ Partial Class AccesoConectadoFR
         Me.idOrden.HeaderText = "ID"
         Me.idOrden.Name = "idOrden"
         Me.idOrden.ReadOnly = True
+        Me.idOrden.Width = 45
         '
         'nombreCliente
         '
         Me.nombreCliente.HeaderText = "Nombre Cliente"
         Me.nombreCliente.Name = "nombreCliente"
         Me.nombreCliente.ReadOnly = True
+        Me.nombreCliente.Width = 110
         '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.HeaderText = "Nombre Empleado"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 124
         '
         'pesoCarga
         '
         Me.pesoCarga.HeaderText = "Peso Carga"
         Me.pesoCarga.Name = "pesoCarga"
+        Me.pesoCarga.ReadOnly = True
+        Me.pesoCarga.Width = 85
         '
         'fechaOt
         '
         Me.fechaOt.HeaderText = "Fecha OT"
         Me.fechaOt.Name = "fechaOt"
         Me.fechaOt.ReadOnly = True
+        Me.fechaOt.Width = 77
         '
         'fechaRequerida
         '
         Me.fechaRequerida.HeaderText = "Fecha Requerida"
         Me.fechaRequerida.Name = "fechaRequerida"
         Me.fechaRequerida.ReadOnly = True
+        Me.fechaRequerida.Width = 114
         '
         'fechaEnvio
         '
         Me.fechaEnvio.HeaderText = "Fecha Envio"
         Me.fechaEnvio.Name = "fechaEnvio"
+        Me.fechaEnvio.ReadOnly = True
+        Me.fechaEnvio.Width = 89
         '
         'enviadoPor
         '
@@ -163,12 +186,14 @@ Partial Class AccesoConectadoFR
         Me.direccionEntrega.HeaderText = "Dirección Entrega"
         Me.direccionEntrega.Name = "direccionEntrega"
         Me.direccionEntrega.ReadOnly = True
+        Me.direccionEntrega.Width = 120
         '
         'codigoPostal
         '
         Me.codigoPostal.HeaderText = "Código Postal"
         Me.codigoPostal.Name = "codigoPostal"
         Me.codigoPostal.ReadOnly = True
+        Me.codigoPostal.Width = 97
         '
         'Label1
         '
@@ -202,6 +227,16 @@ Partial Class AccesoConectadoFR
         Me.ordenesDeTrabajoGB.TabIndex = 4
         Me.ordenesDeTrabajoGB.TabStop = False
         Me.ordenesDeTrabajoGB.Text = "Órdenes de trabajo"
+        '
+        'busqueda
+        '
+        Me.busqueda.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.busqueda.Location = New System.Drawing.Point(735, 97)
+        Me.busqueda.Name = "busqueda"
+        Me.busqueda.Size = New System.Drawing.Size(75, 23)
+        Me.busqueda.TabIndex = 12
+        Me.busqueda.Text = "Busqueda"
+        Me.busqueda.UseVisualStyleBackColor = False
         '
         'Label4
         '
@@ -308,16 +343,6 @@ Partial Class AccesoConectadoFR
         Me.fechaEnvioRadio.TabStop = True
         Me.fechaEnvioRadio.Text = "Fecha de envío"
         Me.fechaEnvioRadio.UseVisualStyleBackColor = True
-        '
-        'busqueda
-        '
-        Me.busqueda.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.busqueda.Location = New System.Drawing.Point(735, 97)
-        Me.busqueda.Name = "busqueda"
-        Me.busqueda.Size = New System.Drawing.Size(75, 23)
-        Me.busqueda.TabIndex = 12
-        Me.busqueda.Text = "Busqueda"
-        Me.busqueda.UseVisualStyleBackColor = False
         '
         'AccesoConectadoFR
         '
