@@ -375,6 +375,39 @@ Public Class AccesoDesconectadoFR
         End If
     End Sub
 
+    Private Sub ShipCityDesc_CheckedChanged(sender As Object, e As EventArgs) Handles ShipCityDesc.CheckedChanged
+        If shipCountryRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorCountryCB As String = shipCountryCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipCountry = '" + valorCountryCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipCity DESC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+
+        ElseIf shipNameRB.Checked Then
+            ' Usando otro metodo de filtro
+            Dim valorNameCB = shipNameCB.Text
+            Dim filtro As String
+            Dim vistaTemp As DataView
+
+            filtro = "ShipName = '" + valorNameCB + "'"
+            vistaTemp = New DataView(tablaOrdenesDeTrabajo, filtro, "ShipCity DESC", DataViewRowState.CurrentRows)
+            ordenesDeTrabajoDG.DataSource = vistaTemp
+
+        Else
+            Dim vtOrder = New DataView(tablaOrdenesDeTrabajo)
+            Dim orden As String
+
+
+            orden = "ShipCity DESC"
+            vtOrder.Sort = orden
+            ordenesDeTrabajoDG.DataSource = vtOrder
+        End If
+    End Sub
+
     Private Sub ordenesDeTrabajoDG_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles ordenesDeTrabajoDG.CellClick
 
         idOrdenDeTrabajoGLobal = ordenesDeTrabajoDG.Rows(e.RowIndex).Cells(0).Value
@@ -387,4 +420,6 @@ Public Class AccesoDesconectadoFR
         detalleOrdenesDeTrabajoDG.Refresh()
 
     End Sub
+
+
 End Class
