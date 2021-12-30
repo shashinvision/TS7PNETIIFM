@@ -48,14 +48,14 @@ Partial Class Principal
         'AccesoConectadoToolStripMenuItem
         '
         Me.AccesoConectadoToolStripMenuItem.Name = "AccesoConectadoToolStripMenuItem"
-        Me.AccesoConectadoToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.AccesoConectadoToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
         Me.AccesoConectadoToolStripMenuItem.Text = "Acceso Conectado"
         '
         'AccesoDesconectadoToolStripMenuItem
         '
         Me.AccesoDesconectadoToolStripMenuItem.Name = "AccesoDesconectadoToolStripMenuItem"
-        Me.AccesoDesconectadoToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
-        Me.AccesoDesconectadoToolStripMenuItem.Text = "Acceso desconectado"
+        Me.AccesoDesconectadoToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.AccesoDesconectadoToolStripMenuItem.Text = "Acceso Desconectado"
         '
         'Principal
         '

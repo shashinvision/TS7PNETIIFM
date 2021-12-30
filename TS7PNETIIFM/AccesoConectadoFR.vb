@@ -249,8 +249,8 @@ Public Class AccesoConectadoFR
 
     Private Sub RadioButton3_CheckedChanged(sender As Object, e As EventArgs) Handles rangoFechasRadio.CheckedChanged
         fechaEnvioDate.Enabled = False
-        rangoCargaDesdeInput.Enabled = True
-        rangoCargaHastaInput.Enabled = True
+        rangoCargaDesdeInput.Enabled = False
+        rangoCargaHastaInput.Enabled = False
         fechaDesde.Enabled = True
         fechaHasta.Enabled = True
     End Sub
